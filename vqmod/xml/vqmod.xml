@@ -1,0 +1,14 @@
+<!-- Created using vQmod XML Generator by UKSB - http://uksb.github.com/vqgen/ //-->
+<modification>
+	<id><![CDATA[Добавление vQmod в админку]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.6.1]]></vqmver>
+	<author><![CDATA[dle-vqmod.ru]]></author>
+	<file name="engine/skins/default.skin.php">
+		<operation info="Добавление vQmod в меню админки">
+			<search position="replace" error="log"><![CDATA[if( count( $menu_item ) ) $sidebar= "<ul class=\"nav navbar-collapse collapse navbar-collapse-primary\"><li><span class=\"glow\"></span><a href=\"?mod=options&action=options\"><i class=\"icon-globe icon-2x\"></i><span>{$lang['header_all']}</span></a></li>".implode("", $menu_item)."</ul>";]]></search>
+			<add><![CDATA[$menu_vqmod = "<li class='dark-nav'><span class='glow'></span><a href='#submenu8' data-toggle='collapse' class='accordion-toggle collapsed'><i class='icon-code icon-2x'><b>&lt;/&gt;</b></i><span>{$lang['vqmod_menu']}<i class='icon-caret-down'></i></span></a><ul class='collapse' id='submenu8' style='height: 0px;'><li class=''><a href='?mod=vqmod'>{$lang['vqmod_module_name']}</a></li>";
+	if( count( $menu_item ) ) $sidebar= "<ul class=\"nav navbar-collapse collapse navbar-collapse-primary\"><li><span class=\"glow\"></span><a href=\"?mod=options&action=options\"><i class=\"icon-globe icon-2x\"></i><span>{$lang['header_all']}</span></a></li>".implode("", $menu_item).$menu_vqmod."</ul>";]]></add>
+		</operation>
+	</file>
+</modification>

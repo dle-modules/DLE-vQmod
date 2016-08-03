@@ -1,0 +1,2592 @@
+<modification>
+	<id><![CDATA[VQMOD installer for DLE / Установщик VQMOD для DLE>]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.4.1]]></vqmver>
+	<author><![CDATA[dle-vqmod.ru]]></author>
+	<file name="index.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[@ob_start ();]]></search>
+			<add><![CDATA[// vQmod
+require_once('./vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/engine/init.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/engine/init.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/download.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[@error_reporting ( E_ALL ^ E_WARNING ^ E_NOTICE );]]></search>
+			<add><![CDATA[// vQmod
+require_once('../vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[require (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/download.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/download.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/engine.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/search.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/search.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/changemail.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/changemail.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/deletenews.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/deletenews.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/comments.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/comments.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/stats.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/stats.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/addnews.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/addnews.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/register.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/register.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/lostpassword.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/lostpassword.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/static.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/static.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/tagscloud.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/tagscloud.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/social.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/social.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/favorites.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/favorites.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/feedback.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/feedback.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/lastcomments.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/lastcomments.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/pm.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/pm.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/modules/addcomments.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/addcomments.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/modules/show.full.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/show.full.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/modules/profile.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/profile.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/modules/show.short.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/show.short.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/go.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[@error_reporting ( E_ALL ^ E_WARNING ^ E_NOTICE );]]></search>
+			<add><![CDATA[// vQmod
+require_once('../vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/data/config.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/init.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include (ENGINE_DIR . '/data/config.php');]]></search>
+			<add><![CDATA[@include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/cron.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/cron.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/banned.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/banned.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/pm_alert.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/pm_alert.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/data/socialconfig.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/data/socialconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/offline.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/offline.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/topnews.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/topnews.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/rssinform.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/rssinform.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/links.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/links.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/vote.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/vote.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/banners.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/banners.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/tagscloud.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/tagscloud.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/opensearch.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[@error_reporting ( E_ALL ^ E_WARNING ^ E_NOTICE );]]></search>
+			<add><![CDATA[// vQmod
+require_once('../vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/preview.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[@error_reporting ( E_ALL ^ E_WARNING ^ E_NOTICE );]]></search>
+			<add><![CDATA[// vQmod
+require_once('../vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/xfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/xfields.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/print.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[@ob_start ();]]></search>
+			<add><![CDATA[// vQmod
+require_once('../vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/rssinform.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/rssinform.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/engine.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/engine.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/rss.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[define( 'DATALIFEENGINE', true );]]></search>
+			<add><![CDATA[// vQmod
+require_once('../vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/engine.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/engine.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/init.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/calendar.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/calendar.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/engine/engine.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/engine/engine.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/main.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/main.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/opensearch.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/preview.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[require (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/print.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/rss.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/addcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/addcomments.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/addcomments.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/adminfunction.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/allvotes.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/antivirus.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/antivirus.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/antivirus.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/calendar.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/clean.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/comments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/complaint.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/deletecomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/editcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/editnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/favorites.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/feedback.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/recaptcha.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/recaptcha.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/find_relates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/find_tags.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/keywords.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$config['langs'].'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$config['langs'].'/adminpanel.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/message.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/newsletter.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$config['langs'].'/website.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$config['langs'].'/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/pm.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/poll.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/profile.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/quote.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rating.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/ratingcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rebuild.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$config['langs'].'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$config['langs'].'/adminpanel.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/registration.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/replycomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rss.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once (ENGINE_DIR.'/classes/parse.class.php');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/search.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/sitemap.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/templates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/typograf.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once(ENGINE_DIR . '/classes/typograf.class.php');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/typograf.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/updates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/upload.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/inc/include/functions.inc.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/language/'.$selected_language.'/adminpanel.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/vote.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/functions.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/functions.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/templates.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/modules/sitelogin.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/modules/sitelogin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/api/api.class.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/data/config.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/classes/mysql.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/data/dbconfig.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/data/dbconfig.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/mail/class.phpmailer.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[$foundlang = include $lang_file;]]></search>
+			<add><![CDATA[$foundlang = include (VQMod::modCheck($lang_file));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/parse.class.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/data/videoconfig.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/videoconfig.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/templates.class.php">
+		<operation info="Сомнительно">
+			<search position="replace" error="log"><![CDATA[include $file_path."/".$file_name;]]></search>
+			<add><![CDATA[include (VQMod::modCheck($file_path."/".$file_name));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/uploads/upload.class.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/thumb.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/thumb.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/mail/class.phpmailer.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once 'extras/ntlm_sasl_client.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck('extras/ntlm_sasl_client.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/min/lib/Minify.php">
+		<operation info="Сомнительно">
+			<search position="replace" error="log"><![CDATA[require_once self::$_options['postprocessorRequire'];]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(self::$_options['postprocessorRequire']));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/templates.class.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/engine/classes/mobiledetect.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/engine/classes/mobiledetect.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/min/lib/Minify/HTML/Helper.php">
+		<operation info="Сомнительно">
+			<search position="replace" error="log"><![CDATA[$gc = (require $this->groupsConfigFile);]]></search>
+			<add><![CDATA[$gc = (require (VQMod::modCheck($this->groupsConfigFile)));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/mail.class.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR . '/engine/classes/mail/class.phpmailer.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/engine/classes/mail/class.phpmailer.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/min/index.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[if( !defined( 'E_DEPRECATED' ) ) {]]></search>
+			<add><![CDATA[// vQmod
+require_once('../../../vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require MINIFY_MIN_DIR . '/config.php';]]></search>
+			<add><![CDATA[require (VQMod::modCheck(MINIFY_MIN_DIR . '/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require "$min_libPath/Minify/Loader.php";]]></search>
+			<add><![CDATA[require (VQMod::modCheck("$min_libPath/Minify/Loader.php"));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[(require MINIFY_MIN_DIR . '/groupsConfig.php');]]></search>
+			<add><![CDATA[(require (VQMod::modCheck(MINIFY_MIN_DIR . '/groupsConfig.php')));]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/min/lib/Minify/Loader.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require $file;]]></search>
+			<add><![CDATA[require (VQMod::modCheck($file));]]></add>
+		</operation>
+	</file>
+	<file name="engine/editor/emotions.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/editor/jscripts/tiny_mce/plugins/emoticons/emotions.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/preview.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ROOT_DIR.'/engine/classes/templates.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR.'/engine/classes/templates.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/logs.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once (ROOT_DIR . '/language/' . $selected_language . '/adminlogs.lng');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/language/' . $selected_language . '/adminlogs.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/social.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once (ENGINE_DIR . '/data/socialconfig.php');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/socialconfig.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/check.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once (ROOT_DIR . '/language/' . $selected_language . '/admincheck.lng');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/language/' . $selected_language . '/admincheck.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/videoconfig.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once (ENGINE_DIR . '/data/videoconfig.php');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/data/videoconfig.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/help.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once (ROOT_DIR . '/language/' . $selected_language . '/help.lng');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/language/' . $selected_language . '/help.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/options.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/userfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/userfields.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/editnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/xfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/xfields.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/editor/shortnews.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/editor/shortnews.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/include/inserttag.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/include/inserttag.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/editor/fullnews.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/editor/fullnews.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/editusers.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/userfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/userfields.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/thumb.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/thumb.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/static.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/editor/static.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/editor/static.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/include/inserttag.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/include/inserttag.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/addnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/xfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/xfields.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/editor/shortnews.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/editor/shortnews.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/include/inserttag.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/include/inserttag.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/editor/fullnews.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/editor/fullnews.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/include/functions.inc.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/skins/default.skin.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/skins/default.skin.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/editvote.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/include/inserttag.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/include/inserttag.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/rss.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/rss.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/rss.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/preview.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR.'/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR.'/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include(ENGINE_DIR.'/inc/xfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/inc/xfields.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/mass_user_actions.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/wordfilter.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/cmoderation.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/newsletter.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR.'/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR.'/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include(ENGINE_DIR.'/editor/newsletter.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/editor/newsletter.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/include/inserttag.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/include/inserttag.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/googlemap.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR.'/classes/google.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR.'/classes/google.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/blockip.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/show.full.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/poll.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/poll.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/banners.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/banners.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/comments.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/comments.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/editor/comments.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/editor/comments.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/bbcode.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/bbcode.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/functions.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/comments.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/comments.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/modules/show.custom.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/show.custom.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/pm.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/stopspam.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/stopspam.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/editor/comments.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/editor/comments.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/bbcode.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/bbcode.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/addnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/xfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/xfields.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/editor/shortsite.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/editor/shortsite.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/editor/fullsite.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/editor/fullsite.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/bbcode.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/bbcode.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/inc/xfields.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/inc/xfields.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/social.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/thumb.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/thumb.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/data/socialconfig.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/data/socialconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/classes/social.class.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/social.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/static.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/banners.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/banners.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/feedback.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/stopspam.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/stopspam.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/comments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/editor/comments.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/editor/comments.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/bbcode.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/bbcode.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/lostpassword.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/rssinform.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/rss.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/rss.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/lastcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/comments.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/comments.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/register.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/stopspam.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/stopspam.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/recaptcha.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/recaptcha.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/static.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/static.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/thumb.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/thumb.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/userfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/userfields.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/profile.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/thumb.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/thumb.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/userfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/userfields.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/show.short.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/banners.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/banners.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/modules/poll.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/poll.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/search.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/modules/banners.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/modules/banners.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/modules/show.custom.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/modules/show.custom.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/comments.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/comments.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/pm.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/recaptcha.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/recaptcha.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/addnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/recaptcha.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/recaptcha.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/addcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/recaptcha.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/recaptcha.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/feedback.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/recaptcha.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/recaptcha.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/lostpassword.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/recaptcha.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/recaptcha.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/favorites.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require (ENGINE_DIR . '/modules/show.short.php');]]></search>
+			<add><![CDATA[require (VQMod::modCheck(ENGINE_DIR . '/modules/show.short.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/register.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="cron.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR.'/engine/inc/googlemap.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR.'/engine/inc/googlemap.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR.'/classes/antivirus.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR.'/classes/antivirus.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR.'/engine/inc/dumper.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR.'/engine/inc/dumper.php'));]]></add>
+		</operation>
+	</file>
+	<file name="admin.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[@ob_start();]]></search>
+			<add><![CDATA[// vQmod
+require_once('./vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/skins/default.skin.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/skins/default.skin.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/inc/main.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/inc/main.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once (ENGINE_DIR . '/inc/' . $mod . '.php');]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/inc/' . $mod . '.php'));]]></add>
+		</operation>
+	</file>
+	<file name="cron.php">
+		<operation>
+			<search position="before" error="log"><![CDATA[$allow_cron = 0;]]></search>
+			<add><![CDATA[// vQmod
+require_once('./vqmod/vqmod.php');
+VQMod::bootup();
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/classes/mysql.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/classes/mysql.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/dbconfig.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/dbconfig.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once ENGINE_DIR.'/inc/include/functions.inc.php';]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR.'/inc/include/functions.inc.php'));]]></add>
+		</operation>
+	</file>
+	<file name="admin.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[require_once (ENGINE_DIR . '/inc/include/init.php');]]></search>
+			<add><![CDATA[require_once (VQMod::modCheck(ENGINE_DIR . '/inc/include/init.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/addcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/comments.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/comments.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/adminfunction.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/stopspam.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/stopspam.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/allvotes.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/antivirus.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/calendar.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/clean.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/comments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/comments.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/comments.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/complaint.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/deletecomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/editcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/ajax/bbcode.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/ajax/bbcode.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/editnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/ajax/bbcode.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/ajax/bbcode.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/inc/xfields.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/inc/xfields.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/favorites.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/feedback.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/stopspam.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/stopspam.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/find_relates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/find_tags.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/keywords.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/message.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/newsletter.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR.'/classes/mail.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR.'/classes/mail.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/pm.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng']]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/poll.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['vote_skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['vote_skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/profile.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/quote.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rating.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/ratingcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rebuild.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/parse.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/parse.class.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/registration.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR.'/language/'.$config["lang_".$config['skin']].'/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR.'/language/'.$config["lang_".$config['skin']].'/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR.'/language/'.$config['langs'].'/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR.'/language/'.$config['langs'].'/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/replycomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once (ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng');]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $_REQUEST['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[@include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[@include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/ajax/bbcode.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/ajax/bbcode.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rss.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/search.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/sitemap.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/templates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/typograf.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/updates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR.'/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR.'/data/config.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/upload.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/adminpanel.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/adminpanel.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/adminpanel.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/adminpanel.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ENGINE_DIR . '/classes/uploads/upload.class.php';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ENGINE_DIR . '/classes/uploads/upload.class.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include (ENGINE_DIR . '/data/videoconfig.php');]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/videoconfig.php'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/vote.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include ENGINE_DIR . '/data/config.php';]]></search>
+			<add><![CDATA[include (VQMod::modCheck(ENGINE_DIR . '/data/config.php'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng'));]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log"><![CDATA[include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';]]></search>
+			<add><![CDATA[include_once (VQMod::modCheck(ROOT_DIR . '/language/' . $config['langs'] . '/website.lng'));]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/vote.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/vote.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/userfields.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/upload.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/updates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/typograf.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/templates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/templates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/editor/static.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/static.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/sitemap.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/editor/shortsite.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/editor/shortnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/search.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rss.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/rss.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/replycomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/registration.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rebuild.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/rebuild.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/ratingcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/rating.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/profile.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/poll.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/pm.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/pm.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/options.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/newsletter.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/newsletter.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/message.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/main.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/keywords.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/include/inserttag.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/googlemap.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/find_tags.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/find_relates.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/files.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/feedback.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/feedback.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/favorites.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/editnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/editnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/editcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/complaint.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/complaint.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/comments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/comments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/classes/comments.class.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/cmoderation.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/clean.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/clean.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/categories.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/calendar.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/antivirus.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/allvotes.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/adminfunction.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/addnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/modules/addnews.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/ajax/addcomments.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="engine/inc/xfields.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[engine/ajax/]]></search>
+			<add><![CDATA[engine/ajax/vqmod_]]></add>
+		</operation>
+	</file>
+	<file name="language/Russian/adminpanel.lng">
+		<operation>
+			<search position="after" error="skip"><![CDATA[$lang = array (]]></search>
+			<add><![CDATA[//vQmod admin panel
+'vqmod_menu'			=>	"vQmod модули",
+'vqmod_module_name'		=>	"Управление и создание модулей",
+'vqmod_module_desc'		=>	"Управление модулями, создание модулей, управление кэшем и логами",]]></add>
+		</operation>
+	</file>
+	<file name="language/English/adminpanel.lng">
+		<operation>
+			<search position="after" error="skip"><![CDATA[$lang = array (]]></search>
+			<add><![CDATA[//vQmod admin panel
+'vqmod_menu'			=>	"vQmod modules",
+'vqmod_module_name'		=>	"Management and creation of modules",
+'vqmod_module_desc'		=>	"Management modules, creation of modules, cache management, and logs",]]></add>
+		</operation>
+	</file>
+</modification>
