@@ -1,6 +1,14 @@
 # Redactors
 .idea/
 
+# vQmod files
+/install/backup/*.zip
+/install/logs/*.log
+/vqmod/logs
+/vqmod/vqcache
+/install/*.cache
+/vqmod/*.cache
+
 # From DLE
 /engine/cache/*.tmp
 /engine/cache/system/*.php
