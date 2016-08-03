@@ -1,3 +1,6 @@
+# Redactors
+.idea/
+
 # From DLE
 /engine/cache/*.tmp
 /engine/cache/system/*.php
