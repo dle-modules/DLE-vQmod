@@ -1,0 +1,3 @@
+approvals = 1
+self_approval_off = true
+pattern = "(?i)\\+1|:\\+1:|LGTM"
