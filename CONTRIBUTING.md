@@ -11,6 +11,7 @@
 2. **Внести изменения в код**
 3. Отправить **Pull Request** в ветку **develop**
 
+
 После этого можно будет отправить Pull Request в ветку master.
 
 ## Code Review
