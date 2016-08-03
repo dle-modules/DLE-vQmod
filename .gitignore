@@ -8,6 +8,9 @@
 /vqmod/vqcache
 /install/*.cache
 /vqmod/*.cache
+/vqmod/xml/*.xml_
+/vqmod/xml/*.xml
+!/vqmod/xml/vqmod.xml
 
 # From DLE
 /engine/cache/*.tmp
