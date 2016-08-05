@@ -125,11 +125,11 @@ function mainTable_foot() {
 function Table_head($title) {
 	echo "<div class=\"box\"><div class=\"box-header\"><div class=\"title\"><div class=\"box-nav\"><font size=\"2\">{$title}</font></div></div></div><div class=\"box-content\">";
 }
-// Информация о модуле и xml файлы для разных версий DLE
+
 function Table_foot() {
 	echo "</div></div>";
 }
-
+// Информация о модуле и xml файлы для разных версий DLE
 $module = array(
 	'name' => "DLE VQMOD",
 	'icon' => "code",
@@ -313,6 +313,8 @@ HTML;
 			// Проверяем путь админки, если кастомный, то вносим это в правила замены vQmod
 			if ( $config['admin_path'] !== "admin.php" ) {
 			$pathreplace_file = fopen("vqmod/pathReplaces.php", 'a+') or die("В /vqmod/pathReplaces.php раскомментируйте строку и измените admin123.php на название вашего файла админпанели");
+			$pathreplace_str = '$replaces[] = array("~admin\.php~", "' . $config['admin_path'] . '");';
+			fwrite($pathreplace_file, $pathreplace_str);
 			fclose($pathreplace_file);
 			}
 			
