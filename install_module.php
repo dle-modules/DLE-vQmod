@@ -125,7 +125,7 @@ function mainTable_foot() {
 function Table_head($title) {
 	echo "<div class=\"box\"><div class=\"box-header\"><div class=\"title\"><div class=\"box-nav\"><font size=\"2\">{$title}</font></div></div></div><div class=\"box-content\">";
 }
-
+// Информация о модуле и xml файлы для разных версий DLE
 function Table_foot() {
 	echo "</div></div>";
 }
@@ -143,6 +143,7 @@ $module = array(
 	'author_s' => "http://webair-studio.ru",
 );
 
+// Проверка авторизации и группы
 if ($is_logged && $member_id['user_group'] == "1") {
 
 	echoheader("<i class=\"icon-" . $module['icon'] . "\"></i>" . $module['name'], $lang['m01']);
@@ -154,17 +155,21 @@ if ($is_logged && $member_id['user_group'] == "1") {
 <style type="text/css">.primary-sidebar,.newsbutton,.navbar-right,.sidebar-background,.pull-right,.navbar-toggle,.navbar-collapse-top{display:none;} .main-content{margin:0!important;} .box{ width: 75%; margin: auto !important;}</style>
 HTML;
 
+	// Установка, если выбрана автоматическая установка
 	if ($_REQUEST['action'] == "install") {
 
 		$mod = new VQEdit();
 		$mod->backup = True;
 		$mod->bootup($path = ROOT_DIR, $logging = True);
+
+		// Для каждой версии DLE свой xml файл
 		if ($config['version_id'] == "11.0") {
 			$mod->file(ROOT_DIR . "/install/xml/" . $module['file11_0']);
 		} else {
 			if ($config['version_id'] == "11.1") {
 				$mod->file(ROOT_DIR . "/install/xml/" . $module['file11_1']);
 			} else {
+				// Ошибка не совместимости вашей версии DLE с DLE vQmod
 				mainTable_head($lang['m27']);
 				echo "<div style=\"padding:10px; background: #990000; color: #fff;\">{$lang['m28']}<br />{$lang['m29']} :<br /><br /><i>{$module['link']}</i></div>";
 				mainTable_foot();
@@ -202,6 +207,8 @@ HTML;
 HTML;
 		mainTable_foot();
 	} else {
+		
+		// Ручная установка, если автоматическая не работает. Опция для мазохистов
 		if ($_REQUEST['action'] == "manual") {
 			if (function_exists('file_get_contents')) {
 				$xmlstr = file_get_contents(ROOT_DIR . "/install/xml/" . $module['file']);
@@ -302,7 +309,15 @@ HTML;
 HTML;
 
 		} else {
-
+			
+			// Проверяем путь админки, если кастомный, то вносим это в правила замены vQmod
+			if ( $config['admin_path'] !== "admin.php" ) {
+			$pathreplace_file = fopen("vqmod/pathReplaces.php", 'a+') or die("В /vqmod/pathReplaces.php раскомментируйте строку и измените admin123.php на название вашего файла админпанели");
+			fclose($pathreplace_file);
+			}
+			
+			// Вывод первого шага установки
+			
 			mainTable_head($lang['m01']);
 			echo <<< HTML
 	<table width="100%" class="table table-normal">
@@ -344,6 +359,7 @@ HTML;
 	}
 	echofooter();
 } else {
+	// Нет прав администратора
 	msg("home", $lang['m30'], $lang['m31'], $config["http_home_url"]);
 }
 ?>
