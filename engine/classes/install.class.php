@@ -27,7 +27,7 @@ abstract class VQMod {
 	public static  $vqCachePath        = 'install/backup/';
 	public static  $modCache           = 'install/mods.cache';
 	public static  $protectedFilelist  = 'install/protect.txt';
-	public static  $pathReplaces       = 'install/pathReplaces.php';
+	public static  $pathReplaces       = 'vqmod/pathReplaces.php';
 	public static  $logging            = true;    // ADDED
 	public static  $log;    // ADDED
 	public static  $fileModding        = false;    // ADDED
