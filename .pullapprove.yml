@@ -1,0 +1,11 @@
+approve_by_comment: true
+approve_regex: '^(Approved|:shipit:|:\+1:|\+1)'
+reject_regex: '^(Rejected|:-1:)'
+reject_value: -1
+reset_on_push: false
+reviewers:
+  members:
+  - pafnuty
+  - webair-studio
+  name: pullapprove
+  required: 1
