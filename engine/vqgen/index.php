@@ -1,16 +1,6 @@
 <?php
 /**
  * vQmod XML Generator v3.3.0
- *
- * Generate XML files for use with vQmod.
- * Built-in File Manager and Log Viewer.
- *
- * For further information please visit {@link http://www.vqmod.com/}
- *
- * @author Simon Powers - UK Site Buidler Ltd <info@uksitebuilder.net> {@link http://uksb.github.com/vqgen/}
- * @copyright Copyright (c) 2013, UK Site Builder Ltd
- * @version $Id: index.php, v3.3.0 2013-08-19 22:30:00 sp Exp $
- * @license http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution-ShareAlike 3.0 Unported License
  */
 
 define('LOG', '../../vqmod/logs/');
@@ -49,8 +39,11 @@ include('inc/cache.php');
 	<title><?php echo PACKAGE_NAME; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css"
-	      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/codemirror.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="js/codemirror.js"></script>
+	<script src="js/codemirror-lang.js"></script>
 
 </head>
 <body>
@@ -60,9 +53,8 @@ include('inc/cache.php');
 		?>
 		<p class="generate"><?php echo FILE_GENERATED . date("G:i"); ?></p>
 		<p><input id="add" class="button" type="button" value="<?php echo CREATE_NEW_FILE; ?>"></p>
-		<p><i class="fa fa-power-off" style="color:green;font-size:17px;" title="<?php echo ENABLE_THIS_VQMOD; ?>"
-		      aria-hidden="true"></i> <input id="add3" class="button" type="button"
-		                                     value="<?php echo ENABLE_THIS_VQMOD; ?>"></p>
+		<p><i class="fa fa-power-off" style="color:green;font-size:17px;" title="<?php echo ENABLE_THIS_VQMOD; ?>" aria-hidden="true"></i>
+		<input id="add3" class="button" type="button" value="<?php echo ENABLE_THIS_VQMOD; ?>"></p>
 		<?php
 	}
 	?>
@@ -189,11 +181,7 @@ include('inc/cache.php');
 				</option>
 			</optgroup>
 		</select><?php if (isset($_GET['vqcachefile']) && $_GET['vqcachefile'] != '' && $_GET['vqcachefile'] != 'mods.cache') { ?>
-		<a href="./?deletevqcachefile=<?php echo $_GET['vqcachefile']; ?>"><i class="fa fa-trash"
-		                                                                      style="color:#888888;font-size:17px;"
-		                                                                      title="<?php echo DELETE; ?>"
-		                                                                      aria-hidden="true"></a><?php } ?><br><br>
-
+		<a href="./?deletevqcachefile=<?php echo $_GET['vqcachefile']; ?>"><i class="fa fa-trash" style="color:#888888;font-size:17px;" title="<?php echo DELETE; ?>" aria-hidden="true"></a><?php } ?><br><br>
 		<textarea id="cache" readonly><?php echo $cache; ?></textarea>
 	</div>
 
@@ -351,7 +339,9 @@ include('inc/cache.php');
 		?>
 	</div>
 
-	<script src="js/jquery-1.9.0.min.js"></script>
+	
+	
+	
 	<?php
 	if (isset($_GET['file'])) {
 		?>
@@ -414,6 +404,7 @@ include('inc/cache.php');
 				x += "\n\t\t\t</select>";
 				x += "\n\t\t\t<span class=\"help\"><?php echo REGEX_HELP; ?></span><br><br>";
 				x += "\n\t\t\t<textarea placeholder=\"<?php echo ADD_ASSIST; ?>\" id=\"add_" + <?php echo $idx; ?> +"_" + <?php echo $idx2; ?> +"\" name=\"add[" + <?php echo $idx; ?> +"][" + <?php echo $idx2; ?> +"]\" style=\"width:940px;height:240px;\"><?php echo preg_replace("/\r?\n/", "\\n", htmlentities(addslashes($op['value'][$arkey + $add]['value']), ENT_QUOTES, 'UTF-8')); ?></textarea><br><br>";
+
 				x += "\n\t\t\t<label for=\"ignoreif_" + <?php echo $idx; ?> +"_" + <?php echo $idx2; ?> +"\"><?php echo IGNOREIF; ?><br><span class=\"help\"><?php echo IGNOREIF_ASSIST; ?></span></label>";
 				x += "\n\t\t\t<input id=\"ignoreif_" + <?php echo $idx; ?> +"_" + <?php echo $idx2; ?> +"\" name=\"ignoreif[" + <?php echo $idx; ?> +"][" + <?php echo $idx2; ?> +"]\" type=\"text\" style=\"width:750px;margin-bottom:10px;\" value=\"<?php echo preg_replace("/\r?\n/", "\\n", htmlentities(addslashes($op['value'][$arkey + $igif]['value']), ENT_QUOTES, 'UTF-8')); ?>\"><br><br>";
 				x += "\n\t\t\t<label for=\"regex_" + <?php echo $idx; ?> +"_" + <?php echo $idx2; ?> +"\"><?php echo REGEX; ?><br><span class=\"help\"><?php echo REGEX_ASSIST; ?></span></label>";
@@ -431,6 +422,7 @@ include('inc/cache.php');
 				x += "\n\t\t\t</select> <?php echo NEW_OPERATIONS; ?> <span class=\"gen\">[<?php echo NOW; ?>]</span></div>";
 				x += "\n\t\t</fieldset>";
 				x += "\n\t</div>";
+				$(document).ready(function(){var editor=CodeMirror.fromTextArea(document.getElementById("add_<?php echo $idx; ?>_<?php echo $idx2; ?>"),{lineNumbers:true,matchBrackets:true,lineWrapping:true,mode:"application/x-httpd-php",indentUnit:4,indentWithTabs:true});});
 				<?php
 				$idx2++;
 				}
@@ -493,6 +485,7 @@ include('inc/cache.php');
 					x += "\n\t\t\t</select>";
 					x += "\n\t\t\t<span class=\"help\"><?php echo REGEX_HELP; ?></span><br><br>";
 					x += "\n\t\t\t<textarea placeholder=\"<?php echo ADD_ASSIST; ?>\" id=\"add_" + idx + "_" + idx2 + "\" name=\"add[" + idx + "][" + idx2 + "]\" style=\"width:940px;height:240px;\"></textarea><br><br>";
+	
 					x += "\n\t\t\t<label for=\"ignoreif_" + idx + "_" + idx2 + "\"><?php echo IGNOREIF; ?><br><span class=\"help\"><?php echo IGNOREIF_ASSIST; ?></span></label>";
 					x += "\n\t\t\t<input id=\"ignoreif_" + idx + "_" + idx2 + "\" name=\"ignoreif[" + idx + "][" + idx2 + "]\" type=\"text\" style=\"width:750px;margin-bottom:10px;\"><br><br>";
 					x += "\n\t\t\t<label for=\"igregex_" + idx + "_" + idx2 + "\"><?php echo REGEX; ?><br><span class=\"help\"><?php echo REGEX_ASSIST; ?></span></label>";
@@ -511,6 +504,7 @@ include('inc/cache.php');
 					x += "\n\t\t</fieldset>";
 					x += "\n\t</div>";
 					x += "\n</div>";
+					$(document).ready(function(){var editor=CodeMirror.fromTextArea(document.getElementById("add_<?php echo $idx; ?>_<?php echo $idx2; ?>"),{lineNumbers:true,matchBrackets:true,lineWrapping:true,mode:"application/x-httpd-php",indentUnit:4,indentWithTabs:true});});
 
 					$("#container").append(x);
 					var $elem = $('body');
@@ -558,6 +552,7 @@ include('inc/cache.php');
 						x += "\n\t\t\t</select>";
 						x += "\n\t\t\t<span class=\"help\"><?php echo REGEX_HELP; ?></span><br><br>";
 						x += "\n\t\t\t<textarea placeholder=\"<?php echo ADD_ASSIST; ?>\" id=\"add_" + idx + "_" + idx2 + "\" name=\"add[" + idx + "][" + idx2 + "]\" style=\"width:940px;height:240px;\"></textarea><br><br>";
+		
 						x += "\n\t\t\t<label for=\"ignoreif_" + idx + "_" + idx2 + "\"><?php echo IGNOREIF; ?><br><span class=\"help\"><?php echo IGNOREIF_ASSIST; ?></span></label>";
 						x += "\n\t\t\t<input id=\"ignoreif_" + idx + "_" + idx2 + "\" name=\"ignoreif[" + idx + "][" + idx2 + "]\" type=\"text\" style=\"width:750px;margin-bottom:10px;\"><br><br>";
 						x += "\n\t\t\t<label for=\"igregex_" + idx + "_" + idx2 + "\"><?php echo REGEX; ?><br><span class=\"help\"><?php echo REGEX_ASSIST; ?></span></label>";
@@ -575,6 +570,7 @@ include('inc/cache.php');
 						x += "\n\t\t\t</select> <?php echo NEW_OPERATIONS; ?> <span class=\"gen\">[<?php echo NOW; ?>]</span></div>";
 						x += "\n\t\t</fieldset>";
 						x += "\n\t</div>";
+						$(document).ready(function(){var editor=CodeMirror.fromTextArea(document.getElementById("add_<?php echo $idx; ?>_<?php echo $idx2; ?>"),{lineNumbers:true,matchBrackets:true,lineWrapping:true,mode:"application/x-httpd-php",indentUnit:4,indentWithTabs:true});});
 
 						$(".file:last").append(x);
 
@@ -644,6 +640,7 @@ include('inc/cache.php');
 				x += "\n\t\t\t</select>";
 				x += "\n\t\t\t<span class=\"help\"><?php echo REGEX_HELP; ?></span><br><br>";
 				x += "\n\t\t\t<textarea placeholder=\"<?php echo ADD_ASSIST; ?>\" id=\"add_" + idx + "_" + idx2 + "\" name=\"add[" + idx + "][" + idx2 + "]\" style=\"width:940px;height:240px;\"></textarea><br><br>";
+
 				x += "\n\t\t\t<label for=\"ignoreif_" + idx + "_" + idx2 + "\"><?php echo IGNOREIF; ?><br><span class=\"help\"><?php echo IGNOREIF_ASSIST; ?></span></label>";
 				x += "\n\t\t\t<input id=\"ignoreif_" + idx + "_" + idx2 + "\" name=\"ignoreif[" + idx + "][" + idx2 + "]\" type=\"text\" style=\"width:750px;margin-bottom:10px;\"><br><br>";
 				x += "\n\t\t\t<label for=\"igregex_" + idx + "_" + idx2 + "\"><?php echo REGEX; ?><br><span class=\"help\"><?php echo REGEX_ASSIST; ?></span></label>";
@@ -662,6 +659,7 @@ include('inc/cache.php');
 				x += "\n\t\t</fieldset>";
 				x += "\n\t</div>";
 				x += "\n</div>";
+				$(document).ready(function(){var editor=CodeMirror.fromTextArea(document.getElementById("add_<?php echo $idx; ?>_<?php echo $idx2; ?>"),{lineNumbers:true,matchBrackets:true,lineWrapping:true,mode:"application/x-httpd-php",indentUnit:4,indentWithTabs:true});});
 
 				$("#container").append(x);
 
@@ -714,6 +712,7 @@ include('inc/cache.php');
 					x += "\n\t\t\t</select>";
 					x += "\n\t\t\t<span class=\"help\"><?php echo REGEX_HELP; ?></span><br><br>";
 					x += "\n\t\t\t<textarea placeholder=\"<?php echo ADD_ASSIST; ?>\" id=\"add_" + idx + "_" + idx2 + "\" name=\"add[" + idx + "][" + idx2 + "]\" style=\"width:940px;height:240px;\"></textarea><br><br>";
+	
 					x += "\n\t\t\t<label for=\"ignoreif_" + idx + "_" + idx2 + "\"><?php echo IGNOREIF; ?><br><span class=\"help\"><?php echo IGNOREIF_ASSIST; ?></span></label>";
 					x += "\n\t\t\t<input id=\"ignoreif_" + idx + "_" + idx2 + "\" name=\"ignoreif[" + idx + "][" + idx2 + "]\" type=\"text\" style=\"width:750px;margin-bottom:10px;\"><br><br>";
 					x += "\n\t\t\t<label for=\"igregex_" + idx + "_" + idx2 + "\"><?php echo REGEX; ?><br><span class=\"help\"><?php echo REGEX_ASSIST; ?></span></label>";
@@ -732,6 +731,7 @@ include('inc/cache.php');
 					x += "\n\t\t</fieldset>";
 					x += "\n\t</div>";
 					x += "\n</div>";
+					$(document).ready(function(){var editor=CodeMirror.fromTextArea(document.getElementById("add_<?php echo $idx; ?>_<?php echo $idx2; ?>"),{lineNumbers:true,matchBrackets:true,lineWrapping:true,mode:"application/x-httpd-php",indentUnit:4,indentWithTabs:true});});
 
 					$("#container").append(x);
 					var $elem = $('body');
@@ -779,6 +779,7 @@ include('inc/cache.php');
 						x += "\n\t\t\t</select>";
 						x += "\n\t\t\t<span class=\"help\"><?php echo REGEX_HELP; ?></span><br><br>";
 						x += "\n\t\t\t<textarea placeholder=\"<?php echo ADD_ASSIST; ?>\" id=\"add_" + idx + "_" + idx2 + "\" name=\"add[" + idx + "][" + idx2 + "]\" style=\"width:940px;height:240px;\"></textarea><br><br>";
+		
 						x += "\n\t\t\t<label for=\"ignoreif_" + idx + "_" + idx2 + "\"><?php echo IGNOREIF; ?><br><span class=\"help\"><?php echo IGNOREIF_ASSIST; ?></span></label>";
 						x += "\n\t\t\t<input id=\"ignoreif_" + idx + "_" + idx2 + "\" name=\"ignoreif[" + idx + "][" + idx2 + "]\" type=\"text\" style=\"width:750px;margin-bottom:10px;\"><br><br>";
 						x += "\n\t\t\t<label for=\"igregex_" + idx + "_" + idx2 + "\"><?php echo REGEX; ?><br><span class=\"help\"><?php echo REGEX_ASSIST; ?></span></label>";
@@ -796,6 +797,7 @@ include('inc/cache.php');
 						x += "\n\t\t\t</select> <?php echo NEW_OPERATIONS; ?> <span class=\"gen\">[<?php echo NOW; ?>]</span></div>";
 						x += "\n\t\t</fieldset>";
 						x += "\n\t</div>";
+						$(document).ready(function(){var editor=CodeMirror.fromTextArea(document.getElementById("add_<?php echo $idx; ?>_<?php echo $idx2; ?>"),{lineNumbers:true,matchBrackets:true,lineWrapping:true,mode:"application/x-httpd-php",indentUnit:4,indentWithTabs:true});});
 
 						$(".file:last").append(x);
 
@@ -884,9 +886,11 @@ include('inc/cache.php');
 				dataType: "json",
 				success: function (data) {
 					$("#cache").val(data);
+					var editor=CodeMirror.fromTextArea(document.getElementById("cache"),{lineNumbers:true,matchBrackets:true,lineWrapping:true,mode:"application/x-httpd-php",indentUnit:4,indentWithTabs:true});
 				}
 			});
 		});
+
 
 		$('#add3').click(function () {
 			location.href = '<?php echo './?enable=' . $_GET['file']; ?>';
