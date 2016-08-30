@@ -130,13 +130,13 @@ function Table_foot() {
 	echo "</div></div>";
 }
 
-function removeDir($path_install_dir) {
-    if (is_file($path_install_dir)) {
-    	@unlink($path_install_dir);
-    } else {
-        array_map('removeDir',glob('/*')) == @rmdir($path_install_dir);
-    }
-    @rmdir($path_install_dir);
+function removeDirectory($path_install_dir) {
+if ($objs = glob($path_install_dir."/*")) {
+foreach($objs as $obj) {
+is_dir($obj) ? removeDirectory($obj) : unlink($obj);
+}
+}
+rmdir($path_install_dir);
 }
 
 // Информация о модуле и xml файлы для разных версий DLE
@@ -216,9 +216,9 @@ HTML;
 	</table>
 HTML;
 		$path_install_dir = ROOT_DIR ."/install/";
-		removeDir($path_install_dir);
+		removeDirectory($path_install_dir);
 		mainTable_foot();
-		@unlink(__FILE__);
+		unlink(__FILE__);
 	} else {
 		
 		// Ручная установка, если автоматическая не работает. Опция для мазохистов
