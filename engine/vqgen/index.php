@@ -13,17 +13,17 @@
  * @license http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution-ShareAlike 3.0 Unported License
  */
 
-define('LOG', '../vqmod/logs/');
+define('LOG', '../../vqmod/logs/');
 define('LOGMAX', 10);
-define('PATH', '../vqmod/xml/');
-define('CACHE', '../vqmod/vqcache/');
-define('MODSCACHE', '../vqmod/mods.cache');
+define('PATH', '../../vqmod/xml/');
+define('CACHE', '../../vqmod/vqcache/');
+define('MODSCACHE', '../../vqmod/mods.cache');
 define('DATALIFEENGINE', true);
-require_once "../engine/inc/include/functions.inc.php";
-require_once "../engine/data/config.php";
-require_once "../engine/classes/mysql.php";
-require_once "../engine/data/dbconfig.php";
-require_once "../engine/modules/sitelogin.php";
+require_once "../inc/include/functions.inc.php";
+require_once "../data/config.php";
+require_once "../classes/mysql.php";
+require_once "../data/dbconfig.php";
+require_once "../modules/sitelogin.php";
 
 if ($is_logged && $member_id['user_group'] == "1") {
 
@@ -906,7 +906,7 @@ include('inc/cache.php');
 	});
 </script>
 <?php } else {
-	echo "<div style='color:red;'>Вы должны войти в систему как администратор<br>You must log in admin</div>";
+	msg("Home", ERROR_ADMIN, ERROR_ADMIN_MSG, $config["http_home_url"]);
 } ?>
 </body>
 </html>

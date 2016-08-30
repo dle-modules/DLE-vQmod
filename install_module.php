@@ -41,7 +41,7 @@ if ($config['langs'] == 'Russian' OR $config['langs'] == 'Ukrainian') {
 		'm08' => "Установка завершена",
 		'm10' => "удалите этот файл для окончания установки",
 		'm11' => "DLE VQMOD удален",
-		'm21' => "Автоматически будет создана резервная копия в /install/backup",
+		'm21' => "Автоматически будет создана резервная копия в /backup/",
 		'm22' => "Если вы уверены что всё впорядке, ",
 		'm23' => "нажмите кнопку",
 		'm24' => "обновлять",
@@ -83,7 +83,7 @@ if ($config['langs'] == 'Russian' OR $config['langs'] == 'Ukrainian') {
 		'm08' => "Installation Finished",
 		'm10' => "delete this file to finish installation",
 		'm11' => "DLE VQMOD Uninstalled",
-		'm21' => "Auto backup your site in /install/backup",
+		'm21' => "Auto backup your site in /backup/",
 		'm22' => "If you are sure that everything is okay, ",
 		'm23' => "click button",
 		'm24' => "Upgrade",
@@ -129,6 +129,16 @@ function Table_head($title) {
 function Table_foot() {
 	echo "</div></div>";
 }
+
+function removeDir($path_install_dir) {
+    if (is_file($path_install_dir)) {
+    	@unlink($path_install_dir);
+    } else {
+        array_map('removeDir',glob('/*')) == @rmdir($path_install_dir);
+    }
+    @rmdir($path_install_dir);
+}
+
 // Информация о модуле и xml файлы для разных версий DLE
 $module = array(
 	'name' => "DLE VQMOD",
@@ -192,7 +202,7 @@ HTML;
 				<b>{$lang['m05']}</b> : <font color="#555555">{$module['modver']}</font><br />
 				<b>{$lang['m25']}</b> : <a href="{$module['link']}">{$module['link']}</a><br />
 				<br /><br />
-				<b><font color="#BF0000">{$module['ifile']}</font> {$lang['m10']}</b><br />
+				<!--<b><font color="#BF0000">{$module['ifile']}</font> {$lang['m10']}</b><br />-->
 			</td>
 		</tr>
 		<tr>
@@ -205,7 +215,10 @@ HTML;
 		</tr>
 	</table>
 HTML;
+		$path_install_dir = ROOT_DIR ."/install/";
+		removeDir($path_install_dir);
 		mainTable_foot();
+		@unlink(__FILE__);
 	} else {
 		
 		// Ручная установка, если автоматическая не работает. Опция для мазохистов
