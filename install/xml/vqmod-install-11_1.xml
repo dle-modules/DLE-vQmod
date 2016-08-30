@@ -1210,6 +1210,12 @@ VQMod::bootup();
 			<add><![CDATA[require_once (VQMod::modCheck(ROOT_DIR . '/engine/classes/mail/class.phpmailer.php'));]]></add>
 		</operation>
 	</file>
+	<file name="engine/classes/min/lib/Minify/Packer.php">
+		<operation>
+			<search position="replace" error="log"><![CDATA[include 'class.JavaScriptPacker.php']]></search>
+			<add><![CDATA[include (VQMod::modCheck('class.JavaScriptPacker.php'))]]></add>
+		</operation>
+	</file>
 	<file name="engine/classes/min/index.php">
 		<operation>
 			<search position="before" error="log"><![CDATA[define('MINIFY_MIN_DIR', dirname(__FILE__));]]></search>
@@ -1220,7 +1226,7 @@ VQMod::bootup();
 		</operation>
 		<operation>
 			<search position="replace" error="log"><![CDATA[require $min_configPaths['base'];]]></search>
-			<add><![CDATA[require (VQMod::modCheck("$min_configPaths['base']"));]]></add>
+			<add><![CDATA[require (VQMod::modCheck($min_configPaths['base']));]]></add>
 		</operation>
 		<operation>
 			<search position="replace" error="log"><![CDATA[require "$min_libPath/Minify/Loader.php";]]></search>
@@ -1228,7 +1234,7 @@ VQMod::bootup();
 		</operation>
 		<operation>
 			<search position="replace" error="log"><![CDATA[(require $min_configPaths['groups']);]]></search>
-			<add><![CDATA[(require (VQMod::modCheck("$min_configPaths['groups']")));]]></add>
+			<add><![CDATA[(require (VQMod::modCheck($min_configPaths['groups'])));]]></add>
 		</operation>
 	</file>
 	<file name="engine/classes/min/lib/Minify/Loader.php">
