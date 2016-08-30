@@ -148,3 +148,5 @@ define('VQMOD_FILE_DISABLED', 'vqmod/xml/%s выключен!');
 define('VQMOD_FILES_DISABLED', 'Все модули в vqmod/xml выключены!');
 define('VQMOD_FILE_ENABLED', 'vqmod/xml/%s включен!');
 define('VQMOD_FILES_ENABLED', 'Все модули в vqmod/xml включены!');
+define('ERROR_ADMIN', 'Нет доступа!');
+define('ERROR_ADMIN_MSG', 'Вы не авторизованы, либо не являетесь администратором!');
